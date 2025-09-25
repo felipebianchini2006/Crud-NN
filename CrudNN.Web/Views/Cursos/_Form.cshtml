@@ -1,0 +1,28 @@
+@model Curso
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<div class="mb-3">
+    <label asp-for="Titulo" class="form-label"></label>
+    <input asp-for="Titulo" class="form-control" />
+    <span asp-validation-for="Titulo" class="text-danger"></span>
+</div>
+<div class="mb-3">
+    <label asp-for="Descricao" class="form-label"></label>
+    <textarea asp-for="Descricao" class="form-control" rows="3"></textarea>
+    <span asp-validation-for="Descricao" class="text-danger"></span>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="mb-3">
+            <label asp-for="PrecoBase" class="form-label"></label>
+            <input asp-for="PrecoBase" class="form-control" type="number" step="0.01" min="0" />
+            <span asp-validation-for="PrecoBase" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="mb-3">
+            <label asp-for="CargaHoraria" class="form-label"></label>
+            <input asp-for="CargaHoraria" class="form-control" type="number" min="1" />
+            <span asp-validation-for="CargaHoraria" class="text-danger"></span>
+        </div>
+    </div>
+</div>

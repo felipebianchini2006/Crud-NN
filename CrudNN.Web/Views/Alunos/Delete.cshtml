@@ -1,0 +1,41 @@
+@using System.Linq
+@model Aluno
+@{
+    ViewData["Title"] = "Excluir aluno";
+    var hasMatriculas = Model.Matriculas.Any();
+}
+
+<h1 class="h3 mb-3">Confirmar exclusão</h1>
+
+@if (hasMatriculas)
+{
+    <div class="alert alert-warning">
+        Não é possível excluir este aluno porque existem matrículas associadas.
+    </div>
+}
+
+<div class="card mb-3">
+    <div class="card-body">
+        <dl class="row mb-0">
+            <dt class="col-sm-3">Nome</dt>
+            <dd class="col-sm-9">@Model.Nome</dd>
+            <dt class="col-sm-3">E-mail</dt>
+            <dd class="col-sm-9">@Model.Email</dd>
+            <dt class="col-sm-3">Telefone</dt>
+            <dd class="col-sm-9">@Model.Telefone</dd>
+        </dl>
+    </div>
+</div>
+
+@if (hasMatriculas)
+{
+    <a class="btn btn-outline-secondary" asp-action="Index">Voltar</a>
+}
+else
+{
+    <form asp-action="Delete" method="post" class="d-inline">
+        <input type="hidden" asp-for="Id" />
+        <button type="submit" class="btn btn-danger">Excluir</button>
+    </form>
+    <a class="btn btn-link" asp-action="Index">Cancelar</a>
+}

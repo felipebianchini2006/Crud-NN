@@ -1,0 +1,18 @@
+@model Curso
+@{
+    ViewData["Title"] = "Novo curso";
+}
+
+<h1 class="h3 mb-3">Novo curso</h1>
+
+<form asp-action="Create" method="post" class="card card-body">
+    <partial name="_Form" />
+    <div class="d-flex justify-content-between">
+        <a class="btn btn-link" asp-action="Index">Cancelar</a>
+        <button type="submit" class="btn btn-primary">Salvar</button>
+    </div>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

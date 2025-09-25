@@ -1,0 +1,32 @@
+@model Matricula
+@{
+    ViewData["Title"] = "Detalhes da matrícula";
+}
+
+<h1 class="h3 mb-3">Detalhes da matrícula</h1>
+
+<div class="card mb-3">
+    <div class="card-body">
+        <dl class="row mb-0">
+            <dt class="col-sm-3">Aluno</dt>
+            <dd class="col-sm-9">@Model.Aluno.Nome</dd>
+            <dt class="col-sm-3">Curso</dt>
+            <dd class="col-sm-9">@Model.Curso.Titulo</dd>
+            <dt class="col-sm-3">Data</dt>
+            <dd class="col-sm-9">@Model.Data.ToLocalTime().ToString("dd/MM/yyyy HH:mm")</dd>
+            <dt class="col-sm-3">Preço pago</dt>
+            <dd class="col-sm-9">@Model.PrecoPago.ToString("C2")</dd>
+            <dt class="col-sm-3">Progresso</dt>
+            <dd class="col-sm-9">@Model.Progresso %</dd>
+            <dt class="col-sm-3">Status</dt>
+            <dd class="col-sm-9">@Model.Status</dd>
+            <dt class="col-sm-3">Nota final</dt>
+            <dd class="col-sm-9">@(Model.NotaFinal?.ToString("F2") ?? "-")</dd>
+        </dl>
+    </div>
+</div>
+
+<div>
+    <a class="btn btn-outline-primary" asp-action="Manage" asp-route-alunoId="@Model.AlunoId">Gerenciar matrícula</a>
+    <a class="btn btn-link" asp-action="Index">Voltar</a>
+</div>

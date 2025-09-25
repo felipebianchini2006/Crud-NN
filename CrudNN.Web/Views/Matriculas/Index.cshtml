@@ -1,0 +1,84 @@
+@using System.Linq
+@using Microsoft.AspNetCore.Mvc.Rendering
+@model IEnumerable<Matricula>
+@{
+    ViewData["Title"] = "Matrículas";
+    var search = ViewData["Search"] as string;
+    MatriculaStatus? statusFilter = ViewData["Status"] is MatriculaStatus value ? value : null;
+    var statusItems = Html.GetEnumSelectList<MatriculaStatus>()
+        .Select(item => new SelectListItem
+        {
+            Value = item.Value,
+            Text = item.Text,
+            Selected = statusFilter.HasValue && item.Value == ((int)statusFilter.Value).ToString()
+        })
+        .ToList();
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="h3 mb-0">Matrículas</h1>
+    <a class="btn btn-primary" asp-action="Manage">Gerenciar matrículas</a>
+</div>
+
+<form method="get" class="row gy-2 gx-2 align-items-end mb-3">
+    <div class="col-sm-5 col-md-4 col-lg-3">
+        <label class="form-label" for="search">Buscar por aluno ou curso</label>
+        <input class="form-control" id="search" name="search" value="@search" />
+    </div>
+    <div class="col-sm-4 col-md-3 col-lg-2">
+        <label class="form-label" for="status">Status</label>
+        @Html.DropDownList("status", statusItems, "Todos", new { @class = "form-select", id = "status" })
+    </div>
+    <div class="col-sm-auto">
+        <button type="submit" class="btn btn-outline-secondary">Filtrar</button>
+    </div>
+    @if (!string.IsNullOrWhiteSpace(search) || statusFilter.HasValue)
+    {
+        <div class="col-sm-auto">
+            <a class="btn btn-link" asp-action="Index">Limpar</a>
+        </div>
+    }
+</form>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">Nenhuma matrícula encontrada.</div>
+}
+else
+{
+    <div class="table-responsive">
+        <table class="table table-striped align-middle">
+            <thead>
+            <tr>
+                <th>Aluno</th>
+                <th>Curso</th>
+                <th>Data</th>
+                <th>Preço pago</th>
+                <th>Progresso</th>
+                <th>Status</th>
+                <th>Nota final</th>
+                <th class="text-end">Ações</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var matricula in Model)
+            {
+                <tr>
+                    <td>@matricula.Aluno.Nome</td>
+                    <td>@matricula.Curso.Titulo</td>
+                    <td>@matricula.Data.ToLocalTime().ToString("dd/MM/yyyy")</td>
+                    <td>@matricula.PrecoPago.ToString("C2")</td>
+                    <td>@matricula.Progresso %</td>
+                    <td>@matricula.Status</td>
+                    <td>@(matricula.NotaFinal?.ToString("F2") ?? "-")</td>
+                    <td class="text-end">
+                        <a class="btn btn-sm btn-outline-secondary me-1" asp-action="Details" asp-route-alunoId="@matricula.AlunoId" asp-route-cursoId="@matricula.CursoId">Detalhes</a>
+                        <a class="btn btn-sm btn-outline-primary me-1" asp-action="Manage" asp-route-alunoId="@matricula.AlunoId">Gerenciar aluno</a>
+                        <a class="btn btn-sm btn-outline-danger" asp-action="Delete" asp-route-alunoId="@matricula.AlunoId" asp-route-cursoId="@matricula.CursoId">Excluir</a>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+}

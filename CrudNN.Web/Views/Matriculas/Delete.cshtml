@@ -1,0 +1,28 @@
+@model Matricula
+@{
+    ViewData["Title"] = "Excluir matrícula";
+}
+
+<h1 class="h3 mb-3">Confirmar exclusão</h1>
+
+<div class="card mb-3">
+    <div class="card-body">
+        <dl class="row mb-0">
+            <dt class="col-sm-3">Aluno</dt>
+            <dd class="col-sm-9">@Model.Aluno.Nome</dd>
+            <dt class="col-sm-3">Curso</dt>
+            <dd class="col-sm-9">@Model.Curso.Titulo</dd>
+            <dt class="col-sm-3">Progresso</dt>
+            <dd class="col-sm-9">@Model.Progresso %</dd>
+            <dt class="col-sm-3">Status</dt>
+            <dd class="col-sm-9">@Model.Status</dd>
+        </dl>
+    </div>
+</div>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="AlunoId" />
+    <input type="hidden" asp-for="CursoId" />
+    <button type="submit" class="btn btn-danger">Excluir</button>
+    <a class="btn btn-link" asp-action="Index">Cancelar</a>
+</form>

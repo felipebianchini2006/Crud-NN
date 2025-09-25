@@ -1,0 +1,76 @@
+@using System.Linq
+@model DashboardViewModel
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<h1 class="h3 mb-4">Visão geral</h1>
+
+<div class="row g-3 mb-4">
+    <div class="col-md-3">
+        <div class="card border-0 shadow-sm">
+            <div class="card-body">
+                <h2 class="h6 text-muted text-uppercase">Alunos</h2>
+                <p class="display-6 mb-0">@Model.TotalAlunos</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card border-0 shadow-sm">
+            <div class="card-body">
+                <h2 class="h6 text-muted text-uppercase">Cursos</h2>
+                <p class="display-6 mb-0">@Model.TotalCursos</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card border-0 shadow-sm">
+            <div class="card-body">
+                <h2 class="h6 text-muted text-uppercase">Matrículas ativas</h2>
+                <p class="display-6 mb-0">@Model.MatriculasAtivas</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card border-0 shadow-sm">
+            <div class="card-body">
+                <h2 class="h6 text-muted text-uppercase">Cursos concluídos</h2>
+                <p class="display-6 mb-0">@Model.MatriculasConcluidas</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h2 class="h5 mb-3">Últimas matrículas</h2>
+@if (!Model.UltimasMatriculas.Any())
+{
+    <p class="text-muted">Nenhuma matrícula registrada ainda.</p>
+}
+else
+{
+    <div class="table-responsive">
+        <table class="table table-striped align-middle">
+            <thead>
+            <tr>
+                <th>Aluno</th>
+                <th>Curso</th>
+                <th>Data</th>
+                <th>Status</th>
+                <th>Progresso</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var matricula in Model.UltimasMatriculas)
+            {
+                <tr>
+                    <td>@matricula.Aluno</td>
+                    <td>@matricula.Curso</td>
+                    <td>@matricula.Data.ToLocalTime().ToString("dd/MM/yyyy HH:mm")</td>
+                    <td>@matricula.Status</td>
+                    <td>@matricula.Progresso %</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+}
