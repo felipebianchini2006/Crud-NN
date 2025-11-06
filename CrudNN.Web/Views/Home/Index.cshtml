@@ -4,7 +4,7 @@
     ViewData["Title"] = "Dashboard";
 }
 
-<h1 class="h3 mb-4">Visão geral</h1>
+<h1 class="h3 mb-4">VisÃ£o geral</h1>
 
 <div class="row g-3 mb-4">
     <div class="col-md-3">
@@ -26,7 +26,7 @@
     <div class="col-md-3">
         <div class="card border-0 shadow-sm">
             <div class="card-body">
-                <h2 class="h6 text-muted text-uppercase">Matrículas ativas</h2>
+                <h2 class="h6 text-muted text-uppercase">MatrÃ­culas ativas</h2>
                 <p class="display-6 mb-0">@Model.MatriculasAtivas</p>
             </div>
         </div>
@@ -34,17 +34,17 @@
     <div class="col-md-3">
         <div class="card border-0 shadow-sm">
             <div class="card-body">
-                <h2 class="h6 text-muted text-uppercase">Cursos concluídos</h2>
+                <h2 class="h6 text-muted text-uppercase">Cursos concluÃ­dos</h2>
                 <p class="display-6 mb-0">@Model.MatriculasConcluidas</p>
             </div>
         </div>
     </div>
 </div>
 
-<h2 class="h5 mb-3">Últimas matrículas</h2>
+<h2 class="h5 mb-3">Ãšltimas matrÃ­culas</h2>
 @if (!Model.UltimasMatriculas.Any())
 {
-    <p class="text-muted">Nenhuma matrícula registrada ainda.</p>
+    <p class="text-muted">Nenhuma matrÃ­cula registrada ainda.</p>
 }
 else
 {

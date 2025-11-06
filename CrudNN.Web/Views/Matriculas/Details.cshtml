@@ -1,9 +1,9 @@
 @model Matricula
 @{
-    ViewData["Title"] = "Detalhes da matrícula";
+    ViewData["Title"] = "Detalhes da matrÃ­cula";
 }
 
-<h1 class="h3 mb-3">Detalhes da matrícula</h1>
+<h1 class="h3 mb-3">Detalhes da matrÃ­cula</h1>
 
 <div class="card mb-3">
     <div class="card-body">
@@ -14,7 +14,7 @@
             <dd class="col-sm-9">@Model.Curso.Titulo</dd>
             <dt class="col-sm-3">Data</dt>
             <dd class="col-sm-9">@Model.Data.ToLocalTime().ToString("dd/MM/yyyy HH:mm")</dd>
-            <dt class="col-sm-3">Preço pago</dt>
+            <dt class="col-sm-3">PreÃ§o pago</dt>
             <dd class="col-sm-9">@Model.PrecoPago.ToString("C2")</dd>
             <dt class="col-sm-3">Progresso</dt>
             <dd class="col-sm-9">@Model.Progresso %</dd>
@@ -27,6 +27,6 @@
 </div>
 
 <div>
-    <a class="btn btn-outline-primary" asp-action="Manage" asp-route-alunoId="@Model.AlunoId">Gerenciar matrícula</a>
+    <a class="btn btn-outline-primary" asp-action="Manage" asp-route-alunoId="@Model.AlunoId">Gerenciar matrÃ­cula</a>
     <a class="btn btn-link" asp-action="Index">Voltar</a>
 </div>

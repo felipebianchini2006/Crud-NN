@@ -1,12 +1,14 @@
 using CrudNN.Web.Data;
 using CrudNN.Web.Models;
 using CrudNN.Web.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace CrudNN.Web.Controllers;
 
+[Authorize]
 public class MatriculasController(ApplicationDbContext context) : Controller
 {
     private readonly ApplicationDbContext _context = context;
@@ -67,7 +69,7 @@ public class MatriculasController(ApplicationDbContext context) : Controller
         var viewModel = await BuildManageViewModelAsync(alunoId.Value, null);
         if (viewModel is null)
         {
-            TempData["Error"] = "Aluno não encontrado.";
+            TempData["Error"] = "Aluno nï¿½o encontrado.";
             return RedirectToAction(nameof(Manage));
         }
 
@@ -83,7 +85,7 @@ public class MatriculasController(ApplicationDbContext context) : Controller
         var hydrated = await BuildManageViewModelAsync(viewModel.AlunoId, viewModel.Cursos);
         if (hydrated is null)
         {
-            ModelState.AddModelError(nameof(MatriculaGerenciarViewModel.AlunoId), "Aluno não encontrado.");
+            ModelState.AddModelError(nameof(MatriculaGerenciarViewModel.AlunoId), "Aluno nï¿½o encontrado.");
             return View(new MatriculaGerenciarViewModel());
         }
 
@@ -105,7 +107,7 @@ public class MatriculasController(ApplicationDbContext context) : Controller
 
             if (item.PrecoPago is null)
             {
-                ModelState.AddModelError($"Cursos[{i}].PrecoPago", "Informe o preço pago.");
+                ModelState.AddModelError($"Cursos[{i}].PrecoPago", "Informe o preï¿½o pago.");
             }
 
             if (item.Progresso is null)
@@ -155,7 +157,7 @@ public class MatriculasController(ApplicationDbContext context) : Controller
         }
 
         await _context.SaveChangesAsync();
-        TempData["Success"] = "Matrículas atualizadas com sucesso.";
+        TempData["Success"] = "Matrï¿½culas atualizadas com sucesso.";
         return RedirectToAction(nameof(Manage), new { alunoId = viewModel.AlunoId });
     }
 
@@ -186,7 +188,7 @@ public class MatriculasController(ApplicationDbContext context) : Controller
 
         _context.Matriculas.Remove(matricula);
         await _context.SaveChangesAsync();
-        TempData["Success"] = "Matrícula removida com sucesso.";
+        TempData["Success"] = "Matrï¿½cula removida com sucesso.";
         return RedirectToAction(nameof(Index));
     }
 

@@ -2,11 +2,11 @@
 @using Microsoft.AspNetCore.Mvc.Rendering
 @model MatriculaGerenciarViewModel
 @{
-    ViewData["Title"] = "Gerenciar matrículas";
+    ViewData["Title"] = "Gerenciar matrÃ­culas";
     var alunos = ViewBag.Alunos as SelectList ?? new SelectList(Enumerable.Empty<SelectListItem>());
 }
 
-<h1 class="h3 mb-3">Gerenciar matrículas</h1>
+<h1 class="h3 mb-3">Gerenciar matrÃ­culas</h1>
 
 <form method="get" class="row gy-2 gx-2 align-items-end mb-4">
     <div class="col-md-6">
@@ -20,7 +20,7 @@
 
 @if (Model.AlunoId == 0)
 {
-    <p class="text-muted">Selecione um aluno para visualizar e atualizar suas matrículas.</p>
+    <p class="text-muted">Selecione um aluno para visualizar e atualizar suas matrÃ­culas.</p>
 }
 else
 {
@@ -34,11 +34,11 @@ else
                 <tr>
                     <th style="width: 220px;">Curso</th>
                     <th style="width: 110px;">Matricular</th>
-                    <th>Preço pago</th>
+                    <th>PreÃ§o pago</th>
                     <th>Progresso</th>
                     <th>Status</th>
                     <th>Nota final</th>
-                    <th>Última atualização</th>
+                    <th>Ãšltima atualizaÃ§Ã£o</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -82,10 +82,10 @@ else
                 </tbody>
             </table>
         </div>
-        <p class="text-muted">Status "Concluido" requer progresso 100%. Nota final é opcional.</p>
+        <p class="text-muted">Status "Concluido" requer progresso 100%. Nota final Ã© opcional.</p>
         <div class="d-flex justify-content-between">
             <a class="btn btn-link" asp-action="Index">Voltar</a>
-            <button type="submit" class="btn btn-primary">Salvar alterações</button>
+            <button type="submit" class="btn btn-primary">Salvar alteraÃ§Ãµes</button>
         </div>
     </form>
 }

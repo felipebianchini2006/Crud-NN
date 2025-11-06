@@ -9,6 +9,7 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
     public DbSet<Aluno> Alunos => Set<Aluno>();
     public DbSet<Curso> Cursos => Set<Curso>();
     public DbSet<Matricula> Matriculas => Set<Matricula>();
+    public DbSet<Admin> Admins => Set<Admin>();
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
@@ -46,6 +47,24 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
 
         builder.Entity<Matricula>()
             .Property(m => m.Data)
+            .HasColumnType("timestamp with time zone")
+            .HasConversion(utcConverter);
+
+        builder.Entity<Admin>()
+            .HasIndex(a => a.Username)
+            .IsUnique();
+
+        builder.Entity<Admin>()
+            .HasIndex(a => a.Email)
+            .IsUnique();
+
+        builder.Entity<Admin>()
+            .Property(a => a.DataCriacao)
+            .HasColumnType("timestamp with time zone")
+            .HasConversion(utcConverter);
+
+        builder.Entity<Admin>()
+            .Property(a => a.UltimoAcesso)
             .HasColumnType("timestamp with time zone")
             .HasConversion(utcConverter);
     }

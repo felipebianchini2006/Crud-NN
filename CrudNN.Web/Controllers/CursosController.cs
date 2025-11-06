@@ -1,10 +1,12 @@
 using CrudNN.Web.Data;
 using CrudNN.Web.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace CrudNN.Web.Controllers;
 
+[Authorize]
 public class CursosController(ApplicationDbContext context) : Controller
 {
     private readonly ApplicationDbContext _context = context;
@@ -128,7 +130,7 @@ public class CursosController(ApplicationDbContext context) : Controller
 
         if (await _context.Matriculas.AnyAsync(m => m.CursoId == id))
         {
-            TempData["Error"] = "Não é possível excluir o curso porque há matrículas associadas.";
+            TempData["Error"] = "Nï¿½o ï¿½ possï¿½vel excluir o curso porque hï¿½ matrï¿½culas associadas.";
             return RedirectToAction(nameof(Delete), new { id });
         }
 

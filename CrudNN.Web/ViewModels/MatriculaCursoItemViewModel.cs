@@ -9,9 +9,9 @@ public class MatriculaCursoItemViewModel
     public string Titulo { get; set; } = string.Empty;
     public bool Selecionado { get; set; }
 
-    [Display(Name = "Preço pago")]
+    [Display(Name = "PreÃ§o pago")]
     [DataType(DataType.Currency)]
-    [Range(0, double.MaxValue, ErrorMessage = "O preço pago deve ser maior ou igual a zero.")]
+    [Range(0, double.MaxValue, ErrorMessage = "O preÃ§o pago deve ser maior ou igual a zero.")]
     public decimal? PrecoPago { get; set; }
 
     [Range(0, 100, ErrorMessage = "O progresso deve estar entre 0 e 100.")]

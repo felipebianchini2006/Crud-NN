@@ -1,0 +1,140 @@
+@model LoginViewModel
+@{
+    ViewData["Title"] = "Login";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Plataforma EAD</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <style>
+        body {
+            background-color: #f8f9fa;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .login-container {
+            max-width: 420px;
+            width: 100%;
+            padding: 20px;
+        }
+        .login-card {
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #dee2e6;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .login-header {
+            padding: 30px 30px 20px;
+            border-bottom: 1px solid #e9ecef;
+        }
+        .login-header h1 {
+            font-size: 24px;
+            margin: 0 0 5px 0;
+            font-weight: 600;
+            color: #212529;
+        }
+        .login-header p {
+            margin: 0;
+            color: #6c757d;
+            font-size: 14px;
+        }
+        .login-body {
+            padding: 30px;
+        }
+        .form-label {
+            font-weight: 500;
+            color: #495057;
+            margin-bottom: 8px;
+        }
+        .form-control {
+            border-radius: 6px;
+            border: 1px solid #ced4da;
+            padding: 10px 12px;
+        }
+        .form-control:focus {
+            border-color: #0d6efd;
+            box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+        }
+        .btn-login {
+            background-color: #0d6efd;
+            border: none;
+            color: white;
+            padding: 10px;
+            font-weight: 500;
+            width: 100%;
+            border-radius: 6px;
+            transition: background-color 0.15s ease-in-out;
+        }
+        .btn-login:hover {
+            background-color: #0b5ed7;
+        }
+        .form-check-label {
+            color: #6c757d;
+            font-size: 14px;
+        }
+        .footer-text {
+            text-align: center;
+            margin-top: 20px;
+            color: #6c757d;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <div class="login-header">
+                <h1>Plataforma EAD</h1>
+                <p>Área Administrativa</p>
+            </div>
+            <div class="login-body">
+                <form asp-action="Login" method="post">
+                    <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+                    
+                    <input type="hidden" asp-for="ReturnUrl" />
+                    
+                    <div class="mb-3">
+                        <label asp-for="Username" class="form-label"></label>
+                        <input asp-for="Username" class="form-control" placeholder="Digite seu usuário" autofocus />
+                        <span asp-validation-for="Username" class="text-danger small"></span>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label asp-for="Password" class="form-label"></label>
+                        <input asp-for="Password" class="form-control" placeholder="Digite sua senha" />
+                        <span asp-validation-for="Password" class="text-danger small"></span>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <div class="form-check">
+                            <input asp-for="RememberMe" class="form-check-input" />
+                            <label asp-for="RememberMe" class="form-check-label"></label>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-login">
+                        Entrar
+                    </button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="footer-text">
+            &copy; @DateTime.Now.Year - Plataforma EAD. Todos os direitos reservados.
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>

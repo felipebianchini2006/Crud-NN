@@ -2,11 +2,13 @@ using System.Diagnostics;
 using CrudNN.Web.Data;
 using CrudNN.Web.Models;
 using CrudNN.Web.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace CrudNN.Web.Controllers;
 
+[Authorize]
 public class HomeController(ILogger<HomeController> logger, ApplicationDbContext context) : Controller
 {
     private readonly ILogger<HomeController> _logger = logger;

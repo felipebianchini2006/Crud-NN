@@ -2,7 +2,7 @@
 @using Microsoft.AspNetCore.Mvc.Rendering
 @model IEnumerable<Matricula>
 @{
-    ViewData["Title"] = "Matrículas";
+    ViewData["Title"] = "MatrÃ­culas";
     var search = ViewData["Search"] as string;
     MatriculaStatus? statusFilter = ViewData["Status"] is MatriculaStatus value ? value : null;
     var statusItems = Html.GetEnumSelectList<MatriculaStatus>()
@@ -16,8 +16,8 @@
 }
 
 <div class="d-flex justify-content-between align-items-center mb-3">
-    <h1 class="h3 mb-0">Matrículas</h1>
-    <a class="btn btn-primary" asp-action="Manage">Gerenciar matrículas</a>
+    <h1 class="h3 mb-0">MatrÃ­culas</h1>
+    <a class="btn btn-primary" asp-action="Manage">Gerenciar matrÃ­culas</a>
 </div>
 
 <form method="get" class="row gy-2 gx-2 align-items-end mb-3">
@@ -42,7 +42,7 @@
 
 @if (!Model.Any())
 {
-    <div class="alert alert-info">Nenhuma matrícula encontrada.</div>
+    <div class="alert alert-info">Nenhuma matrÃ­cula encontrada.</div>
 }
 else
 {
@@ -53,11 +53,11 @@ else
                 <th>Aluno</th>
                 <th>Curso</th>
                 <th>Data</th>
-                <th>Preço pago</th>
+                <th>PreÃ§o pago</th>
                 <th>Progresso</th>
                 <th>Status</th>
                 <th>Nota final</th>
-                <th class="text-end">Ações</th>
+                <th class="text-end">AÃ§Ãµes</th>
             </tr>
             </thead>
             <tbody>

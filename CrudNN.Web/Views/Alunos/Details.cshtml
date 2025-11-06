@@ -17,10 +17,10 @@
     </div>
 </div>
 
-<h2 class="h5 mt-4">MatrÌculas</h2>
+<h2 class="h5 mt-4">Matr√≠culas</h2>
 @if (!Model.Matriculas.Any())
 {
-    <p>Este aluno ainda n„o possui matrÌculas.</p>
+    <p>Este aluno ainda n√£o possui matr√≠culas.</p>
 }
 else
 {
@@ -29,7 +29,7 @@ else
             <thead>
             <tr>
                 <th>Curso</th>
-                <th>PreÁo pago</th>
+                <th>Pre√ßo pago</th>
                 <th>Progresso</th>
                 <th>Status</th>
                 <th>Nota final</th>
@@ -52,6 +52,6 @@ else
 }
 
 <div class="mt-3">
-    <a class="btn btn-outline-primary" asp-controller="Matriculas" asp-action="Manage" asp-route-alunoId="@Model.Id">Gerenciar matrÌculas</a>
+    <a class="btn btn-outline-primary" asp-controller="Matriculas" asp-action="Manage" asp-route-alunoId="@Model.Id">Gerenciar matr√≠culas</a>
     <a class="btn btn-link" asp-action="Index">Voltar</a>
 </div>

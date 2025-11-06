@@ -30,12 +30,37 @@
                             <a class="nav-link" asp-controller="Cursos" asp-action="Index">Cursos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="Matriculas" asp-action="Index">Matrículas</a>
+                            <a class="nav-link" asp-controller="Matriculas" asp-action="Index">MatrÃ­culas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="Matriculas" asp-action="Manage">Gerenciar Matrículas</a>
+                            <a class="nav-link" asp-controller="Matriculas" asp-action="Manage">Gerenciar MatrÃ­culas</a>
                         </li>
                     </ul>
+                    @if (User.Identity?.IsAuthenticated == true)
+                    {
+                        <ul class="navbar-nav">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Administrador
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                    <li>
+                                        <a class="dropdown-item" asp-controller="Account" asp-action="AlterarSenha">
+                                            Alterar Senha
+                                        </a>
+                                    </li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li>
+                                        <form asp-controller="Account" asp-action="Logout" method="post" class="d-inline">
+                                            <button type="submit" class="dropdown-item text-danger">
+                                                Sair
+                                            </button>
+                                        </form>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    }
                 </div>
             </div>
         </nav>
